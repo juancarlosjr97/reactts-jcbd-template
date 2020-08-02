@@ -1,6 +1,14 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 
 import Index from "./pages";
 
-render(<Index />, document.getElementById("root"));
+const rootElement = document.getElementById("root");
+
+const Root = () => (
+  <>
+    <Index />
+  </>
+);
+
+ReactDOM.render(<Root />, rootElement);

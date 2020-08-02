@@ -22,13 +22,16 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@services/*": [
+        "src/services/*"
+      ],
       "@pages/*": [
         "src/pages/*"
       ],
-      "@services/*": [
-        "src/services/*"
+      "@environment/*": [
+        "src/environment/*"
       ]
-    }
+    },
   },
   "include": ["src", "src/custom.d.ts"]
 }
