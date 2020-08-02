@@ -3,7 +3,7 @@ import logo from "../assets/avatar.png";
 import "../styles.css";
 
 const vlaue = () => {
-  return "treu";
+  return 'treu';
 };
 
 function test() {

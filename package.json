@@ -16,7 +16,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "lint:fix"
+    "*.{js,jsx,ts,tsx}": "yarn lint"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
