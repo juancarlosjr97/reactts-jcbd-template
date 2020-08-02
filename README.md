@@ -2,7 +2,7 @@
 
 ### Features
 
-- [x] ReactTS
+- [x] React 16
 - [x] Babel
 - [x] WebPack
 - [x] Local development
