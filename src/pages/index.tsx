@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/sponge_bob.png";
 import "../styles.css";
 
-const App = () => {
+const App: React.FC = (): React.ReactElement => {
   return (
     <div className="container">
       <h1>{process.env.SITE_NAME}</h1>
