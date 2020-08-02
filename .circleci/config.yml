@@ -1,0 +1,56 @@
+version: 2.1
+
+jobs:
+  deploying:
+    docker:
+      - image: circleci/node:12.3.1
+    steps: &STEPS
+      - add_ssh_keys
+      - checkout
+      - run:
+          name: Update Package list
+          command: |
+            sudo apt-get update
+      - run:
+          name: Install RSYNC
+          command: |
+            sudo apt install -y rsync
+      - run:
+          name: Install Pip for Python
+          command: |
+            sudo apt install python3-pip
+      - run:
+          name: Install PyYAML for Python
+          command: |
+            sudo pip3 install PyYaml
+      - run:
+          name: Deploy site
+          command: |
+            python3 .circleci/deploy.py --site=${SITE} --branch=${CIRCLE_BRANCH} --repo=${CIRCLE_PROJECT_REPONAME}
+
+workflows:
+  frontend-master:
+    jobs:
+      - deploying:
+          context: master
+          filters: &FILTER
+            branches:
+              only:
+                - master
+  frontend-staging:
+    jobs:
+      - deploying:
+          context: staging
+          filters:
+            branches:
+              only:
+                - staging
+
+  frontend-develop:
+    jobs:
+      - deploying:
+          context: develop
+          filters:
+            branches:
+              only:
+                - develop
