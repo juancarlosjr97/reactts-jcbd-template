@@ -1,8 +1,8 @@
 html,
 body {
   height: 100vh;
-  background-color: #ef7460;
-  color: #fff;
+  background-color: #ffff;
+  color: #000;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   display: flex;

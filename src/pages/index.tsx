@@ -1,22 +1,15 @@
 import React from "react";
-import logo from "../assets/avatar.png";
+import logo from "../assets/sponge_bob.png";
 import "../styles.css";
 
-const vlaue = () => {
-  return "treu";
-};
-
-function test() {
-  return true;
-}
-
-export default function src() {
-  const value = "ddd";
-
+const App = () => {
   return (
     <div className="container">
+      <h1>{process.env.SITE_NAME}</h1>
       <h1>{process.env.API_URL}</h1>
-      <img src={logo} alt="" />
+      <img src={logo} alt="JCBD" />
     </div>
   );
-}
+};
+
+export default App;

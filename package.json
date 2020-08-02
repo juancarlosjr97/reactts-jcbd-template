@@ -6,6 +6,7 @@
   "scripts": {
     "build:prod": "rm -rf ./dist && webpack --config webpack.config.js --mode production",
     "start:dev": "webpack-dev-server --mode development --hot --open",
+    "frontend:start": "yarn install && yarn start:dev --host 0.0.0.0 --watch --watch-poll",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
     "format": "prettier --write src/**/*.{ts,tsx}",

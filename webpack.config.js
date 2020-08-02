@@ -29,6 +29,10 @@ module.exports = {
     contentBase: path.join(__dirname, "public"),
     compress: true,
     port: 3000,
+    watchOptions: {
+      aggregateTimeout: 500,
+      poll: true,
+    },
   },
   entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
