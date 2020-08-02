@@ -1,7 +1,6 @@
-# react-babel-typescript
+# React TypeScript Template
 
-Repo used as an example how to configuring a React project without create-react-app
+### TODO
 
-## To run: at the root `yarn` to install dependencies and `yarn dev` to run an application at http://localhost:3000.
-
-https://dev.to/renatobentorocha/setup-a-react-js-project-with-typescript-eslint-and-prettier-without-create-react-app-l6i
+- [ ] Alias Webpack and ESlint - Avoid conflict
+- [ ] Add Dockerise frontend with HMR
