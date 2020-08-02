@@ -2,17 +2,15 @@ import React from "react";
 import logo from "../assets/avatar.png";
 import "../styles.css";
 
-
 const vlaue = () => {
-  return 'treu';
+  return "treu";
 };
 
 function test() {
   return true;
-
 }
 
-uexport default function src() {
+export default function src() {
   const value = "ddd";
 
   return (
