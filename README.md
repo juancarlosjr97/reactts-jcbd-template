@@ -22,3 +22,12 @@
 - [ ] Dockerise frontend with HMR
 - [ ] Service Workers
 - [ ] Dockerise with self-certificates and DNS configuration
+
+### Usage
+
+1.  Re-init git
+
+        rm -rf .git
+        git init
+
+2.  Rename the project name on `package.json` changing the `name`
