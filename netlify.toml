@@ -1,8 +1,0 @@
-[build]
-    base = "./"
-    publish = "./dist/"
-    command = "yarn build:prod"
-
-[context.production.environment]
-    API_URL='https://api.jcbd.local/'
-    SITE_NAME='Juan Carlos Blanco Delgado'
