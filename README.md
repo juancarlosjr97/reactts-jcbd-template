@@ -21,3 +21,4 @@
 
 - [ ] Dockerise frontend with HMR
 - [ ] Service Workers
+- [ ] Dockerise with self-certificates and DNS configuration
