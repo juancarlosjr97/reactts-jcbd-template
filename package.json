@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "main": "index.tsx",
   "license": "MIT",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
     "build:prod": "rm -rf ./dist && webpack --config ./config/webpack.config.js --mode production",
     "start:dev": "webpack-dev-server --mode development --config ./config/webpack.config.js --hot --open",
