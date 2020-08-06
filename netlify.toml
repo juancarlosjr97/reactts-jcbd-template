@@ -1,0 +1,4 @@
+[build]
+base = "reactts-jcbd-template/"
+publish = "reactts-jcbd-template/dist/"
+command = "yarn build:prod"

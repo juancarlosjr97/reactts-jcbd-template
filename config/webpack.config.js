@@ -2,50 +2,51 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const dotenv = require("dotenv");
 const webpack = require("webpack");
-const CopyPlugin = require("copy-webpack-plugin");
+const fs = require("fs");
+const { merge } = require("webpack-merge");
+const pathResolutions = require("./paths");
 
-const env = dotenv.config().parsed;
+const topDirectory = path.join(__dirname, "..");
 
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  return prev;
-}, {});
+const envKeys = () => {
+  const env = dotenv.config().parsed;
 
-module.exports = {
-  resolve: {
-    extensions: [".tsx", ".ts", ".js", "jsx"],
-    alias: {
-      "@app": path.resolve(__dirname, "./src/*"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@services": path.resolve(__dirname, "./src/services"),
-      "@pages": path.resolve(__dirname, "./src/pages/*"),
-      "@environment": path.resolve(__dirname, "./src/environment/*"),
-    },
-  },
+  if (env) {
+    return Object.keys(env).reduce((prev, next) => {
+      prev[`process.env.${next}`] = JSON.stringify(env[next]);
+      return prev;
+    }, {});
+  }
+
+  return {};
+};
+
+const commonConfig = {
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(topDirectory, "public"),
     compress: true,
-    port: 3000,
+    port: 3500,
     watchOptions: {
       aggregateTimeout: 500,
       poll: true,
     },
   },
-  entry: path.resolve(__dirname, "src", "index.tsx"),
+  entry: path.resolve(topDirectory, "src", "index.tsx"),
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(topDirectory, "dist"),
     filename: "bundle.[hash].js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "index.html"),
+      template: path.resolve(topDirectory, "src", "index.html"),
     }),
-    new webpack.DefinePlugin(envKeys),
+    new webpack.DefinePlugin(envKeys()),
     new CopyPlugin({
-      patterns: [{ from: path.resolve(__dirname, "public"), to: path.resolve(__dirname, "dist") }],
+      patterns: [{ from: path.resolve(topDirectory, "public"), to: path.resolve(topDirectory, "dist") }],
     }),
   ],
   module: {
@@ -75,4 +76,8 @@ module.exports = {
       },
     ],
   },
+};
+
+module.exports = () => {
+  return merge(commonConfig, pathResolutions);
 };

@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "commonjs",
     "rootDir": "src",
     "outDir": "./dist/",
@@ -16,22 +12,16 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@app/*": [
-        "src/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@environment/*": [
-        "src/environment/*"
-      ]
-    },
+      "@app/*": ["src/*"],
+      "@pages/*": ["src/pages/*"],
+      "@components/*": ["src/components/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"],
+      "@assets/*": ["src/assets"],
+      "@styles/*": ["src/styles"],
+      "@environment": ["src/environment/environment.ts"]
+    }
   },
-  "include": ["src", "src/custom.d.ts"]
+  "include": ["src", "src/app-env.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

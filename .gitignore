@@ -4,7 +4,6 @@
 /coverage
 /build
 dist
-environment.ts
 .env
 .DS_Store
 .env.local

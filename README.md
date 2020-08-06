@@ -5,16 +5,18 @@
 - [x] React 16
 - [x] Babel
 - [x] WebPack
-- [x] Local development
-- [x] Production build
+- [x] Local development configuration
+- [x] Production build configuration
 - [x] ESLint and Prettier
-- [x] .env
+- [x] Husky and Ling Staged to avoid conflicts on style on commits
+- [x] .env and .example.env as an example
 - [x] Extension declarations
 - [x] Manifest for PWA
 - [x] .htaccess
 - [x] Basic configuration of CircleCI
+- [x] Alias Webpack and ESlint, and TSConfig to detect aliases
+- [x] Dockerise frontend
 
 ### TODO
 
-- [ ] Alias Webpack and ESlint - Avoid conflict
-- [ ] Add Dockerise frontend with HMR
+- [ ] Dockerise frontend with HMR

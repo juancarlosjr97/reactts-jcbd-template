@@ -4,8 +4,8 @@
   "main": "index.tsx",
   "license": "MIT",
   "scripts": {
-    "build:prod": "rm -rf ./dist && webpack --config webpack.config.js --mode production",
-    "start:dev": "webpack-dev-server --mode development --hot --open",
+    "build:prod": "rm -rf ./dist && webpack --config ./config/webpack.config.js --mode production",
+    "start:dev": "webpack-dev-server --mode development --config ./config/webpack.config.js --hot --open",
     "frontend:start": "yarn install && yarn start:dev --host 0.0.0.0 --watch --watch-poll",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
@@ -62,8 +62,10 @@
     "copy-webpack-plugin": "^6.0.3",
     "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
+    "eslint-import-resolver-webpack": "^0.12.2",
     "html-webpack-plugin": "^4.3.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "webpack-merge": "^5.1.1"
   }
 }
