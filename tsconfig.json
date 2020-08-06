@@ -22,6 +22,6 @@
       "@environment": ["src/environment/environment.ts"]
     }
   },
-  "include": ["src", "src/utils/app-env.d.ts"],
+  "include": ["src", "src/utils/global-declarations/app-env.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
