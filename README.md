@@ -20,3 +20,4 @@
 ### TODO
 
 - [ ] Dockerise frontend with HMR
+- [ ] Service Workers
