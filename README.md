@@ -16,11 +16,12 @@
 - [x] Basic configuration of CircleCI
 - [x] Alias Webpack and ESlint, and TSConfig to detect aliases
 - [x] Dockerise frontend
+- [x] Service Workers with Hook
+- [x] Adding LocalStorage class
 
 ### TODO
 
 - [ ] Dockerise frontend with HMR
-- [ ] Service Workers
 - [ ] Dockerise with self-certificates and DNS configuration
 
 ### Usage
