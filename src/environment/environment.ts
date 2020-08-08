@@ -1,6 +1,6 @@
 const environment = {
   SITE_NAME: process.env.SITE_NAME,
-  ENVIRONMENT: process.env.NODE_ENV,
+  PRODUCTION: process.env.NODE_ENV === "production",
   API_URL: process.env.API_URL,
 };
 
