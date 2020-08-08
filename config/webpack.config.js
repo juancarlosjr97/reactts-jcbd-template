@@ -1,6 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
@@ -42,7 +39,7 @@ const commonConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(topDirectory, "src", "index.html"),
+      template: path.resolve(topDirectory, "public", "index.html"),
     }),
     new webpack.DefinePlugin(envKeys()),
     new CopyPlugin({
