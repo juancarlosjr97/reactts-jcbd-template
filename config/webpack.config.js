@@ -6,6 +6,8 @@ const webpack = require("webpack");
 const fs = require("fs");
 const { merge } = require("webpack-merge");
 const pathResolutions = require("./paths");
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const ManifestPlugin = require("webpack-manifest-plugin");
 
 const topDirectory = path.join(__dirname, "..");
 
@@ -44,6 +46,34 @@ const commonConfig = {
     new webpack.DefinePlugin(envKeys()),
     new CopyPlugin({
       patterns: [{ from: path.resolve(topDirectory, "public"), to: path.resolve(topDirectory, "dist") }],
+    }),
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
+      publicPath: "/",
+      generate: (seed, files, entrypoints) => {
+        const manifestFiles = files.reduce((manifest, file) => {
+          manifest[file.name] = file.path;
+          return manifest;
+        }, seed);
+        const entrypointFiles = entrypoints.main.filter(
+          fileName => !fileName.endsWith('.map')
+        );
+
+        return {
+          files: manifestFiles,
+          entrypoints: entrypointFiles,
+        };
+      },
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      clientsClaim: true,
+      exclude: [/\.map$/, /asset-manifest\.json$/],
+      importWorkboxFrom: 'cdn',
+      navigateFallback: 'index.html',
+      navigateFallbackBlacklist: [
+        new RegExp('^/_'),
+        new RegExp('/[^/?]+\\.[^/]+$'),
+      ],
     }),
   ],
   module: {
