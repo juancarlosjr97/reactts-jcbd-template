@@ -5,7 +5,7 @@
 - [x] React 16
 - [x] Babel
 - [x] WebPack
-- [x] Local development configuration
+- [x] Local development configuration with HMR Webpack Plugin
 - [x] Production build configuration
 - [x] ESLint and Prettier
 - [x] Husky and Ling Staged to avoid conflicts on style on commits
@@ -18,12 +18,20 @@
 - [x] Service Workers with Hook
 - [x] Adding LocalStorage class
 - [x] Adding webpack dev server configuration using script to reuse open tab
+- [x] Minified htm
 
 ### TODO
 
 - [ ] .htaccess that does not cause conflict with ServiceWorker on production
 - [ ] Dockerise frontend with HMR
 - [ ] Dockerise with self-certificates and DNS configuration
+- [ ] Review source map
+
+
+      `devtool: isEnvProduction ? shouldUseSourceMap ? "source-map" : false : isEnvDevelopment && "cheap-module-source-map"`
+
+- [ ] Add file limit - 10MB
+- [ ] Add variables to index.html using https://www.npmjs.com/package/html-webpack-plugin
 
 ### Usage
 
