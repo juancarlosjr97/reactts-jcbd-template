@@ -12,7 +12,6 @@
 - [x] .env and .example.env as an example
 - [x] Extension declarations
 - [x] Manifest for PWA
-- [x] .htaccess
 - [x] Basic configuration of CircleCI
 - [x] Alias Webpack and ESlint, and TSConfig to detect aliases
 - [x] Dockerise frontend
@@ -22,6 +21,7 @@
 
 ### TODO
 
+- [ ] .htaccess that does not cause conflict with ServiceWorker on production
 - [ ] Dockerise frontend with HMR
 - [ ] Dockerise with self-certificates and DNS configuration
 
