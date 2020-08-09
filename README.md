@@ -18,6 +18,7 @@
 - [x] Dockerise frontend
 - [x] Service Workers with Hook
 - [x] Adding LocalStorage class
+- [x] Adding webpack dev server configuration using script to reuse open tab
 
 ### TODO
 
