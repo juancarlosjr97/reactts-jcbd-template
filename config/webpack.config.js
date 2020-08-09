@@ -42,10 +42,8 @@ const commonConfig = (env) => {
     return isEnvProduction ? {
       publicPath: "/",
       path: path.resolve(topDirectory, "dist"),
-      filename: isEnvProduction ? "static/js/[name].[contenthash:8].js" : isEnvDevelopment && "static/js/bundle.js",
-      chunkFilename: isEnvProduction
-        ? "static/js/[name].[contenthash:8].chunk.js"
-        : isEnvDevelopment && "static/js/[name].chunk.js",
+      filename: "static/js/[name].[contenthash:8].js",
+      chunkFilename: "static/js/[name].[contenthash:8].chunk.js",
       globalObject: "this",
     } : {
       path: path.resolve(topDirectory, "dist"),
