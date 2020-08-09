@@ -8,6 +8,7 @@ const { merge } = require("webpack-merge");
 const pathResolutions = require("./paths");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const topDirectory = path.join(__dirname, "..");
 
@@ -25,6 +26,7 @@ const envKeys = () => {
 };
 
 const commonConfig = {
+  context: topDirectory,
   devServer: {
     host: "localhost",
     port: 3500,
@@ -46,6 +48,9 @@ const commonConfig = {
     }
   },
   entry: path.resolve(topDirectory, "src", "index.tsx"),
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
   output: {
     path: path.resolve(topDirectory, "dist"),
     filename: "bundle.[hash].js",
@@ -57,6 +62,11 @@ const commonConfig = {
     new webpack.DefinePlugin(envKeys()),
     new CopyPlugin({
       patterns: [{ from: path.resolve(topDirectory, "public"), to: path.resolve(topDirectory, "dist") }],
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      eslint: {
+        files: "./src/**/*.{ts,tsx,js,jsx}"
+      }
     }),
     new ManifestPlugin({
       fileName: "asset-manifest.json",
