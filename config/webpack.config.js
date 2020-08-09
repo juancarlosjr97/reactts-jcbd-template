@@ -26,13 +26,24 @@ const envKeys = () => {
 
 const commonConfig = {
   devServer: {
+    host: "localhost",
+    port: 3500,
     contentBase: path.join(topDirectory, "public"),
     compress: true,
-    port: 3500,
-    watchOptions: {
-      aggregateTimeout: 500,
-      poll: true,
-    },
+    watchContentBase: true,
+    hot: true,
+    transportMode: "ws",
+    after: (app, server, compiler) => {
+      const execSync = require("child_process").execSync;
+
+      let port = server.options.port;
+      let host = server.options.host
+
+      execSync(`osascript openChrome.applescript http://${host}:${port}`, {
+        cwd: __dirname,
+        stdio: "ignore",
+      });
+    }
   },
   entry: path.resolve(topDirectory, "src", "index.tsx"),
   output: {
@@ -48,7 +59,7 @@ const commonConfig = {
       patterns: [{ from: path.resolve(topDirectory, "public"), to: path.resolve(topDirectory, "dist") }],
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json',
+      fileName: "asset-manifest.json",
       publicPath: "/",
       generate: (seed, files, entrypoints) => {
         const manifestFiles = files.reduce((manifest, file) => {
@@ -56,7 +67,7 @@ const commonConfig = {
           return manifest;
         }, seed);
         const entrypointFiles = entrypoints.main.filter(
-          fileName => !fileName.endsWith('.map')
+          fileName => !fileName.endsWith(".map")
         );
 
         return {
@@ -68,11 +79,11 @@ const commonConfig = {
     new WorkboxWebpackPlugin.GenerateSW({
       clientsClaim: true,
       exclude: [/\.map$/, /asset-manifest\.json$/],
-      importWorkboxFrom: 'cdn',
-      navigateFallback: 'index.html',
+      importWorkboxFrom: "cdn",
+      navigateFallback: "index.html",
       navigateFallbackBlacklist: [
-        new RegExp('^/_'),
-        new RegExp('/[^/?]+\\.[^/]+$'),
+        new RegExp("^/_"),
+        new RegExp("/[^/?]+\\.[^/]+$"),
       ],
     }),
   ],
