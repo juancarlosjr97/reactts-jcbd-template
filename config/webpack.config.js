@@ -31,6 +31,7 @@ const envKeys = () => {
   return {};
 };
 
+<<<<<<< HEAD
 const commonConfig = (env) => {
   const isEnvProduction = env.NODE_ENV === "production";
   const isEnvDevelopment = env.NODE_ENV === "development";
@@ -66,6 +67,43 @@ const commonConfig = (env) => {
       overlay: {
         errors: true,
         warnings: true,
+=======
+const commonConfig = {
+  devServer: {
+    contentBase: path.join(topDirectory, "public"),
+    compress: true,
+    port: 3500,
+    watchOptions: {
+      aggregateTimeout: 500,
+      poll: true,
+    },
+  },
+  entry: path.resolve(topDirectory, "src", "index.tsx"),
+  output: {
+    path: path.resolve(topDirectory, "dist"),
+    filename: "bundle.[hash].js",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(topDirectory, "public", "index.html"),
+    }),
+    new webpack.DefinePlugin(envKeys()),
+    new CopyPlugin({
+      patterns: [{ from: path.resolve(topDirectory, "public"), to: path.resolve(topDirectory, "dist") }],
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: ["babel-loader", "eslint-loader"],
+      },
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [{ loader: "ts-loader" }, { loader: "eslint-loader" }],
+>>>>>>> develop
       },
       after: (app, server, compiler) => {
         const execSync = require("child_process").execSync;
